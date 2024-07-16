@@ -8,7 +8,7 @@ dotenv.config();
 
 export function setupServer() {
   const app = express();
-  const PORT = Number(process.env.PORT) || 3000;
+  const PORT = Number(process.env.PORT) || 4000;
 
   app.use(
     pino({
