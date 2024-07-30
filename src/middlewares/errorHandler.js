@@ -5,6 +5,7 @@ export const errorHandler = (error, _req, res, _next) => {
         return res.status(error.status).send({
           status: error.status,
           message: error.message,
+          data: error,
         });
       }
 
