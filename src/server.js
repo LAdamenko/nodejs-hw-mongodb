@@ -1,6 +1,8 @@
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
+import authRouters from './routers/auth.js';
 import contactsRouter from './routers/contacts.js';
 import dotenv from "dotenv";
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -23,6 +25,10 @@ export function setupServer() {
   app.use(cors());
 
   app.use(express.json());
+
+  app.use(cookieParser());
+
+  app.use(authRouters);
 
   app.use(contactsRouter);
 
