@@ -7,6 +7,7 @@ import contactsRouter from './routers/contacts.js';
 import dotenv from "dotenv";
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 dotenv.config();
 
@@ -27,6 +28,8 @@ export function setupServer() {
   app.use(express.json());
 
   app.use(cookieParser());
+
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use(authRouters);
 
